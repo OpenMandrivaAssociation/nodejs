@@ -2,7 +2,7 @@ Name:           nodejs
 Version:        0.4.7
 Release:        1
 Summary:        JavaScript server-side network application development
-Group:          Development/Languages/Other
+Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
 Source0:        http://nodejs.org/dist/node-v%{version}.tar.gz 
