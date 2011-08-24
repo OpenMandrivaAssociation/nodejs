@@ -1,6 +1,6 @@
 Name:           nodejs
 Version:        0.4.11
-Release:        1
+Release:        %{mkrel 1}
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
