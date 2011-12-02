@@ -7,6 +7,7 @@ License:        MIT
 URL:            http://nodejs.org/
 Source0:        http://nodejs.org/dist/node-v%{version}.tar.gz 
 BuildRequires:  libstdc++-devel python openssl-devel
+BuildRequires:  zlib-devel
 
 %description
 Evented I/O for Google V8 JavaScript
