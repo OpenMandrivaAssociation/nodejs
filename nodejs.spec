@@ -1,11 +1,11 @@
 Name:           nodejs
-Version:        0.6.8
+Version:        0.6.11
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
-Source0:        http://nodejs.org/dist/node-v%{version}.tar.gz 
+Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz 
 BuildRequires:  libstdc++-devel python openssl-devel
 BuildRequires:  zlib-devel
 
@@ -30,7 +30,6 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %makeinstall_std
 
 %files
-%defattr(-,root,root,-)
 %doc doc README.md LICENSE AUTHORS
 %attr(755,root,root) %{_bindir}/node
 %attr(755,root,root) %{_bindir}/npm
