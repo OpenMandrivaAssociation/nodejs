@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.6.11
+Version:        0.6.12
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
