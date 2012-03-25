@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.6.13
+Version:        0.6.14
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -23,7 +23,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %setup -q -n node-v%{version}
 
 %build
-./configure --debug --prefix=%{_prefix}
+./configure --prefix=%{_prefix}
 %make
 
 %install
