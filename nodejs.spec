@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.6.15
+Version:        0.7.8
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -21,13 +21,20 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
 %setup -q -n node-v%{version}
+sed -i "s|/usr/local|%{buildroot}|" tools/installer.js
 
 %build
-./configure --prefix=%{_prefix}
-%make
+
+./configure --shared-v8 --prefix=%{buildroot}/usr \
+	    --shared-v8-includes=%{_includedir} \
+	    --openssl-use-sys --shared-zlib
+make
 
 %install
+
 %makeinstall_std
+
+rm -f %{buildroot}/%{_includedir}/node/v8*
 
 %files
 %doc doc README.md LICENSE AUTHORS
@@ -35,8 +42,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %attr(755,root,root) %{_bindir}/npm
 #%attr(755,root,root) %{_bindir}/node_g
 %attr(755,root,root) %{_bindir}/node-waf
-%{_mandir}/man1/node.1*
 %{_includedir}/node*
 #%{_prefix}/lib/pkgconfig/nodejs.pc
-%{_prefix}/lib/node*
-
+%{_prefix}/lib/node_modules/
+%{_prefix}/lib/node/wafadmin/
