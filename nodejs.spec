@@ -21,28 +21,39 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
 %setup -q -n node-v%{version}
-sed -i "s|/usr/local|%{buildroot}|" tools/installer.js
+#s ed -i "s|/usr/local|%{buildroot}|" tools/installer.js
+
+# http://code.google.com/p/gyp/issues/detail?id=260
+sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
+
 
 %build
 
-./configure --shared-v8 --prefix=%{buildroot}/usr \
+./configure --shared-v8 --prefix=%{buildroot}/%{_prefix} \
 	    --shared-v8-includes=%{_includedir} \
 	    --openssl-use-sys --shared-zlib
-make
+%make
 
 %install
+#%makeinstall_std
 
-%makeinstall_std
+mkdir -p %{buildroot}/%{_includedir}/node
+mkdir -p %{buildroot}/%{_bindir}
+mkdir -p %{buildroot}/lib/node_modules/npm
 
-rm -f %{buildroot}/%{_includedir}/node/v8*
+cp 'src/node.h' 'src/node_buffer.h' 'src/node_object_wrap.h' 'src/node_version.h' %{buildroot}/%{_includedir}/node || die "Failed to copy stuff"
+cp 'deps/uv/include/ares.h' 'deps/uv/include/ares_version.h'  %{buildroot}/%{_includedir}/node || die "Failed to copy stuff"
+cp 'out/Release/node' %{buildroot}/%{_bindir}/node || die "Failed to copy stuff"
+cp -R deps/npm/* %{buildroot}/lib/node_modules/npm || die "Failed to copy stuff"
+
+ln -s /lib/node_modules/npm/bin/npm-cli.js %{buildroot}/%{_bindir}/npm
+
+
+#r m -f %{buildroot}/%{_includedir}/node/v8*
 
 %files
 %doc doc README.md LICENSE AUTHORS
-%attr(755,root,root) %{_bindir}/node
-%attr(755,root,root) %{_bindir}/npm
-#%attr(755,root,root) %{_bindir}/node_g
-%attr(755,root,root) %{_bindir}/node-waf
+%{_bindir}/node
+%{_bindir}/npm
 %{_includedir}/node*
-#%{_prefix}/lib/pkgconfig/nodejs.pc
-%{_prefix}/lib/node_modules/
-%{_prefix}/lib/node/wafadmin/
+/lib/node_modules/
