@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.8.1
+Version:        0.8.3
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
