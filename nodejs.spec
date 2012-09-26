@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.8.4
+Version:        0.9.1
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -45,18 +45,19 @@ mkdir -p %{buildroot}/lib/node_modules/npm
 
 #/lib/node_modules/npm/man/man1/folders.1
 
-
-#includes
-cp 'src/node.h' 'src/node_buffer.h' 'src/node_object_wrap.h' 'src/node_version.h' %{buildroot}/%{_includedir}/node || die "Failed to copy stuff"
-cp 'deps/uv/include/ares.h' 'deps/uv/include/ares_version.h'  %{buildroot}/%{_includedir}/node || die "Failed to copy stuff"
-cp 'out/Release/node' %{buildroot}/%{_bindir}/node || die "Failed to copy stuff"
-
-
+#move mans before copying deps/npm/
 mv -f deps/npm/man/* %{buildroot}/%{_mandir}
 
+#includes
+cp 'src/eio-emul.h' 'src/ev-emul.h' 'src/node.h' 'src/node_buffer.h' 'src/node_object_wrap.h' 'src/node_version.h' %{buildroot}/usr/include/node || die "Failed to copy stuff"
+cp -R deps/uv/include/* %{buildroot}/usr/include/node || die "Failed to copy stuff"
+cp 'out/Release/node' %{buildroot}/usr/bin/node || die "Failed to copy stuff"
 cp -R deps/npm/* %{buildroot}/lib/node_modules/npm || die "Failed to copy stuff"
-cp -R tools/wafadmin %{buildroot}/lib/node/  || die "Failed to copy stuff"
-cp tools/node-waf %{buildroot}/%{_bindir}/ || die "Failed to copy stuff"
+
+
+cp -R deps/npm/* %{buildroot}/lib/node_modules/npm || die "Failed to copy stuff"
+#cp -R tools/wafadmin %{buildroot}/lib/node/  || die "Failed to copy stuff"
+#cp tools/node-waf %{buildroot}/%{_bindir}/ || die "Failed to copy stuff"
 
 
 ln -s /lib/node_modules/npm/bin/npm-cli.js %{buildroot}/%{_bindir}/npm
@@ -67,10 +68,10 @@ ln -s /lib/node_modules/npm/bin/npm-cli.js %{buildroot}/%{_bindir}/npm
 %files
 %doc doc README.md LICENSE AUTHORS
 %{_bindir}/node
-%{_bindir}/node-waf
+#% {_bindir}/node-waf
 %{_bindir}/npm
 %{_includedir}/node*
 %{_mandir}/man1/*.xz
 %{_mandir}/man3/*.xz
 /lib/node_modules/
-/lib/node/
+#/lib/node/
