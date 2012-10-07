@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.9.1
+Version:        0.9.2
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
