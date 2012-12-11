@@ -1,13 +1,15 @@
 Name:           nodejs
-Version:        0.9.2
+Version:        0.8.2
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
-Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz 
-BuildRequires:  libstdc++-devel python openssl-devel
-BuildRequires:  zlib-devel v8-devel
+Source0:        http://nodejs.org/dist/node-v%{version}.tar.gz 
+
+BuildRequires:  libstdc++-devel
+BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig(python)
 
 %description
 Evented I/O for Google V8 JavaScript
@@ -18,60 +20,30 @@ and a lot of modules to ease your projects creation.
 
 Node.js's goal is to provide an easy way to build scalable network programs. 
 
-
 %prep
 %setup -q -n node-v%{version}
-#s ed -i "s|/usr/local|%{buildroot}|" tools/installer.js
-
-# http://code.google.com/p/gyp/issues/detail?id=260
-sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
-
 
 %build
-
-./configure --shared-v8 --prefix=%{buildroot}/%{_prefix} \
-	    --shared-v8-includes=%{_includedir} \
-	    --openssl-use-sys --shared-zlib
+./configure --prefix=%{_prefix}
 %make
 
 %install
-#%makeinstall_std
-
-mkdir -p %{buildroot}/%{_includedir}/node
-mkdir -p %{buildroot}/%{_bindir}
-mkdir -p %{buildroot}/%{_mandir}
-mkdir -p %{buildroot}/lib/node_modules/npm
-
-
-#/lib/node_modules/npm/man/man1/folders.1
-
-#move mans before copying deps/npm/
-mv -f deps/npm/man/* %{buildroot}/%{_mandir}
-
-#includes
-cp 'src/eio-emul.h' 'src/ev-emul.h' 'src/node.h' 'src/node_buffer.h' 'src/node_object_wrap.h' 'src/node_version.h' %{buildroot}/usr/include/node || die "Failed to copy stuff"
-cp -R deps/uv/include/* %{buildroot}/usr/include/node || die "Failed to copy stuff"
-cp 'out/Release/node' %{buildroot}/usr/bin/node || die "Failed to copy stuff"
-cp -R deps/npm/* %{buildroot}/lib/node_modules/npm || die "Failed to copy stuff"
-
-
-cp -R deps/npm/* %{buildroot}/lib/node_modules/npm || die "Failed to copy stuff"
-#cp -R tools/wafadmin %{buildroot}/lib/node/  || die "Failed to copy stuff"
-#cp tools/node-waf %{buildroot}/%{_bindir}/ || die "Failed to copy stuff"
-
-
-ln -s /lib/node_modules/npm/bin/npm-cli.js %{buildroot}/%{_bindir}/npm
-
-
-#r m -f %{buildroot}/%{_includedir}/node/v8*
+%makeinstall_std
 
 %files
-%doc doc README.md LICENSE AUTHORS
-%{_bindir}/node
-#% {_bindir}/node-waf
+%defattr(-,root,root,-)
+%doc doc README.md LICENSE AUTHORS ChangeLog
+%attr(755,root,root) %{_bindir}/node
+%attr(755,root,root) %{_bindir}/node-waf
 %{_bindir}/npm
+%{_mandir}/man1/node.1*
 %{_includedir}/node*
-%{_mandir}/man1/*.xz
-%{_mandir}/man3/*.xz
-/lib/node_modules/
-#/lib/node/
+%{_prefix}/lib/node*
+
+%changelog
+* Wed May 18 2011 Eugeni Dodonov <eugeni@mandriva.com> 0.4.7-1
++ Revision: 676071
+- Fix group
+- Imported node.js
+- Created package structure for nodejs.
+
