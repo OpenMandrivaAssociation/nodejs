@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.9.12
+Version:        0.9.9
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -9,6 +9,8 @@ Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
+BuildRequires:	v8-devel
+BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
 
 %description
@@ -24,18 +26,19 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %setup -q -n node-v%{version}
 
 %build
-./configure --prefix=%{_prefix} --openssl-use-sys --shared-zlib
+./configure --prefix=%{_prefix} \
+	--openssl-use-sys \
+	--shared-zlib \
+	--shared-v8 \
+	--shared-cares
 %make
 
 %install
 %makeinstall_std
 
 %files
-%defattr(-,root,root,-)
-%doc doc README.md LICENSE AUTHORS ChangeLog
-%attr(755,root,root) %{_bindir}/node
-%attr(755,root,root) %{_bindir}/node-waf
+%{_bindir}/node*
 %{_bindir}/npm
-%{_mandir}/man1/node.1*
-%{_includedir}/node*
-%{_prefix}/lib/node*
+%{_prefix}/lib/node_modules
+%{_prefix}/lib/dtrace/node.d
+%{_mandir}/man1/node.1.*
