@@ -1,11 +1,11 @@
 Name:           nodejs
-Version:        0.8.2
+Version:        0.9.12
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
-Source0:        http://nodejs.org/dist/node-v%{version}.tar.gz 
+Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz 
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
@@ -24,7 +24,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %setup -q -n node-v%{version}
 
 %build
-./configure --prefix=%{_prefix}
+./configure --prefix=%{_prefix} --openssl-use-sys --shared-zlib
 %make
 
 %install
@@ -39,11 +39,3 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %{_mandir}/man1/node.1*
 %{_includedir}/node*
 %{_prefix}/lib/node*
-
-%changelog
-* Wed May 18 2011 Eugeni Dodonov <eugeni@mandriva.com> 0.4.7-1
-+ Revision: 676071
-- Fix group
-- Imported node.js
-- Created package structure for nodejs.
-
