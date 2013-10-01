@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.10.15
+Version:        0.10.20
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -29,7 +29,6 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 ./configure --prefix=%{_prefix} \
 	--openssl-use-sys \
 	--shared-zlib \
-	--shared-v8 \
 	--shared-cares
 %make
 
