@@ -1,6 +1,6 @@
 Name:           nodejs
 Version:        0.10.15
-Release:        1
+Release:        2
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
