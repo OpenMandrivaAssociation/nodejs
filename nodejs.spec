@@ -1,6 +1,6 @@
 Name:           nodejs
-Version:        0.10.15
-Release:        2
+Version:        0.10.26
+Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
@@ -9,7 +9,6 @@ Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
-BuildRequires:	v8-devel
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
 
@@ -29,7 +28,6 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 ./configure --prefix=%{_prefix} \
 	--openssl-use-sys \
 	--shared-zlib \
-	--shared-v8 \
 	--shared-cares
 %make
 
