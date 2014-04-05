@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.10.20
+Version:        0.10.26
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -9,7 +9,6 @@ Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
-BuildRequires:	v8-devel
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
 
