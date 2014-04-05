@@ -37,6 +37,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %files
 %{_bindir}/node*
 %{_bindir}/npm
+%{_includedir}/node
 %{_prefix}/lib/node_modules
 %{_prefix}/lib/dtrace/node.d
 %{_mandir}/man1/node.1.*
