@@ -1,11 +1,12 @@
 Name:           nodejs
-Version:        0.10.26
+Version:        0.10.28
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
 Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz 
+Source100:	%{name}.rpmlintrc
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
@@ -39,5 +40,4 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %{_bindir}/npm
 %{_includedir}/node
 %{_prefix}/lib/node_modules
-%{_prefix}/lib/dtrace/node.d
 %{_mandir}/man1/node.1.*
