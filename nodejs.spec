@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.10.28
+Version:        0.11.9
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -26,6 +26,8 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %setup -q -n node-v%{version}
 
 %build
+# make sure we use python2.* while using gyp
+sed -i -e  "s/python/python2/" deps/npm/node_modules/node-gyp/gyp/gyp
 ./configure --prefix=%{_prefix} \
 	--openssl-use-sys \
 	--shared-zlib \
