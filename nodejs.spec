@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        0.11.9
+Version:        0.11.13
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -26,15 +26,18 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %setup -q -n node-v%{version}
 
 %build
-# make sure we use python2.* while using gyp
-sed -i -e  "s/python/python2/" deps/npm/node_modules/node-gyp/gyp/gyp
+# Use python 2.x for building...
+ln -s `which python2` python
+export PATH=`pwd`:$PATH
+# Currently, bundled c-ares is newer than the latest released version.
+# should use --shared-cares once a newer compatible c-ares is released.
 ./configure --prefix=%{_prefix} \
 	--openssl-use-sys \
-	--shared-zlib \
-	--shared-cares
+	--shared-zlib
 %make
 
 %install
+export PATH=`pwd`:$PATH
 %makeinstall_std
 
 %files
@@ -43,3 +46,4 @@ sed -i -e  "s/python/python2/" deps/npm/node_modules/node-gyp/gyp/gyp
 %{_includedir}/node
 %{_prefix}/lib/node_modules
 %{_mandir}/man1/node.1.*
+%{_datadir}/systemtap/tapset/node.stp
