@@ -1,6 +1,6 @@
 Name:           nodejs
-Version:        0.11.14
-Release:        2
+Version:        0.12.2
+Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
