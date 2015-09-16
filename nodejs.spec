@@ -32,7 +32,7 @@ export PATH=`pwd`:$PATH
 # Currently, bundled c-ares is newer than the latest released version.
 # should use --shared-cares once a newer compatible c-ares is released.
 ./configure --prefix=%{_prefix} \
-	--openssl-use-sys \
+	--shared-openssl \
 	--shared-zlib
 %make
 
