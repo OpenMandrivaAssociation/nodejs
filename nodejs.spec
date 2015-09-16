@@ -1,11 +1,11 @@
 Name:           nodejs
-Version:        0.12.3
+Version:        4.0.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
-Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.gz 
+Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:  libstdc++-devel
