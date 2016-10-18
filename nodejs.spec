@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        4.1.0
+Version:        6.8.1
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
