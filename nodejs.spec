@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        4.1.0
+Version:        6.9.1
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -33,12 +33,16 @@ export PATH=`pwd`:$PATH
 # should use --shared-cares once a newer compatible c-ares is released.
 ./configure --prefix=%{_prefix} \
 	--shared-openssl \
+	--with-intl=system-icu \
+	--shared-cares \
 	--shared-zlib
-%make
+%make CC=%{__cc} CXX=%{__cxx}
 
 %install
 export PATH=`pwd`:$PATH
-%makeinstall_std
+%makeinstall_std CC=%{__cc} CXX=%{__cxx}
+
+find %{buildroot} -type f -empty -delete
 
 %files
 %{_bindir}/node*
