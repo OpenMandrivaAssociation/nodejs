@@ -13,6 +13,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
+BuildRequires:	icu-devel
 
 %description
 Evented I/O for Google V8 JavaScript
