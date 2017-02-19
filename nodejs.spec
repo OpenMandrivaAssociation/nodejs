@@ -1,12 +1,11 @@
 Name:           nodejs
-Version:        6.9.1
+Version:        6.9.5
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
 Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
-Patch0:		https://github.com/kroeckx/node/commit/62cc7b80c0840528e6936bd72e3d370e24f8d99f.patch
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:  libstdc++-devel
@@ -22,7 +21,7 @@ Node.js use V8 engine (JavaScript engine used for Webkit) and let you create
 application on server-side. It handles HTTP server, Socket server, clients
 and a lot of modules to ease your projects creation.
 
-Node.js's goal is to provide an easy way to build scalable network programs. 
+Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
 %setup -q -n node-v%{version}
