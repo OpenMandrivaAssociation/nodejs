@@ -1,6 +1,6 @@
 Name:           nodejs
 Version:        6.9.5
-Release:        1
+Release:        2
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
