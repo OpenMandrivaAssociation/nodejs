@@ -1,0 +1,2 @@
+# Since the entire thing is basically a devel package
+addFilter("E: devel-file-in-non-devel-package")
