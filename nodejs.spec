@@ -34,9 +34,13 @@ export PATH=`pwd`:$PATH
 # Currently, bundled c-ares is newer than the latest released version.
 # should use --shared-cares once a newer compatible c-ares is released.
 ./configure --prefix=%{_prefix} \
+%if %mdvver <= 3000000
 	--shared-openssl \
+%endif
 	--with-intl=system-icu \
+%if %mdvver >= 3000000
 	--shared-cares \
+%endif
 	--shared-zlib
 %make CC=%{__cc} CXX=%{__cxx}
 
