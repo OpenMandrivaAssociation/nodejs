@@ -1,6 +1,6 @@
 Name:           nodejs
-Version:        6.9.5
-Release:        2
+Version:        8.1.2
+Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
@@ -58,3 +58,5 @@ find %{buildroot} -type f -empty -delete
 %{_mandir}/man1/node.1.*
 %{_datadir}/systemtap/tapset/node.stp
 %{_docdir}/node/gdbinit
+%{_docdir}/node/lldbinit
+%{_docdir}/node/lldb_commands.py
