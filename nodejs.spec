@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        8.1.2
+Version:        8.6.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -53,6 +53,7 @@ find %{buildroot} -type f -empty -delete
 %files
 %{_bindir}/node*
 %{_bindir}/npm
+%{_bindir}/npx
 %{_includedir}/node
 %{_prefix}/lib/node_modules
 %{_mandir}/man1/node.1.*
