@@ -1,5 +1,5 @@
 Name:           nodejs
-Version:        8.6.0
+Version:        9.0.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -12,7 +12,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
-BuildRequires:	icu-devel
+BuildRequires:	icu-devel >= 60
 
 %description
 Evented I/O for Google V8 JavaScript
