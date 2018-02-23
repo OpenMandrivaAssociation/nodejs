@@ -49,8 +49,9 @@ find %{buildroot} -type f -empty -delete
 %files
 %{_bindir}/node*
 %{_bindir}/npm
+%{_bindir}/npx
 %{_includedir}/node
 %{_prefix}/lib/node_modules
 %{_mandir}/man1/node.1.*
 %{_datadir}/systemtap/tapset/node.stp
-%{_docdir}/node/gdbinit
+%{_docdir}/node/*
