@@ -1,5 +1,8 @@
+# ****ing python 2.x...
+%global _python_bytecompile_build 0
+
 Name:           nodejs
-Version:        9.5.0
+Version:        10.1.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
