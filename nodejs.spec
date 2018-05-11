@@ -15,6 +15,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 
 %description
