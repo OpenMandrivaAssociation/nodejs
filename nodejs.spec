@@ -14,7 +14,7 @@ Source100:	%{name}.rpmlintrc
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig(libcares)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 
