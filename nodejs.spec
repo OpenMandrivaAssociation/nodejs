@@ -2,13 +2,13 @@
 %global _python_bytecompile_build 0
 
 Name:           nodejs
-Version:        10.9.0
+Version:        10.12.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
-Source0:        http://nodejs.org/dist/v%{version}/node-v%{version}.tar.xz
+Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 
 BuildRequires:  libstdc++-devel
@@ -28,7 +28,7 @@ and a lot of modules to ease your projects creation.
 Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
-%setup -q -n node-v%{version}
+%setup -q -n node-%{version}
 %apply_patches
 
 %build
