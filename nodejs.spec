@@ -3,7 +3,7 @@
 
 Name:           nodejs
 Version:        10.12.0
-Release:        1
+Release:        2
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
