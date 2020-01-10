@@ -29,7 +29,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
 %setup -q -n node-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 # Use python 2.x for building...
