@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(libbrotlienc)
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
+BuildRequires:	atomic-devel
 
 %description
 Evented I/O for Google V8 JavaScript
