@@ -2,19 +2,24 @@
 %global _python_bytecompile_build 0
 
 Name:           nodejs
-Version:        10.16.0
-Release:        2
+Version:        13.12.0
+Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
 License:        MIT
 URL:            http://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
+Patch0:		nodejs-link-libatomic.patch
 
 BuildRequires:  libstdc++-devel
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig(libcares)
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(libuv)
+BuildRequires:	pkgconfig(libnghttp2)
+BuildRequires:	pkgconfig(libbrotlidec)
+BuildRequires:	pkgconfig(libbrotlienc)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 
@@ -28,23 +33,22 @@ and a lot of modules to ease your projects creation.
 Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
-%setup -q -n node-%{version}
-%autopatch -p1
+%autosetup -p1 -n node-%{version}
 
 %build
 # Use python 2.x for building...
-ln -s `which python2` python
-export PATH=`pwd`:$PATH
+#ln -s `which python2` python
+#export PATH=`pwd`:$PATH
 # Currently, bundled c-ares is newer than the latest released version.
 # should use --shared-cares once a newer compatible c-ares is released.
+# Might want to add --shared-http-parser at some point
 ./configure --prefix=%{_prefix} \
-%if %mdvver <= 3000000
 	--shared-openssl \
-%endif
+	--shared-brotli \
+	--shared-libuv \
+	--shared-nghttp2 \
 	--with-intl=system-icu \
-%if %mdvver >= 3000000
 	--shared-cares \
-%endif
 	--shared-zlib
 %make CC=%{__cc} CXX=%{__cxx}
 
@@ -63,5 +67,4 @@ find %{buildroot} -type f -empty -delete
 %{_mandir}/man1/node.1.*
 %{_datadir}/systemtap/tapset/node.stp
 %{_docdir}/node/gdbinit
-%{_docdir}/node/lldbinit
 %{_docdir}/node/lldb_commands.py
