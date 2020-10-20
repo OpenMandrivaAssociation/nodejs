@@ -2,7 +2,7 @@
 #global _python_bytecompile_build 0
 
 Name:           nodejs
-Version:        14.0.0
+Version:        14.14.0
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
@@ -11,10 +11,10 @@ URL:            http://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
-Patch1:		v8-icu-67.patch
+#Patch1:		v8-icu-67.patch
 
 BuildRequires:  libstdc++-devel
-BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(libuv)
 BuildRequires:	pkgconfig(libnghttp2)
