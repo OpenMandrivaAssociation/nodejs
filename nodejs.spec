@@ -2,7 +2,7 @@
 #global _python_bytecompile_build 0
 
 Name:           nodejs
-Version:        14.14.0
+Version:        14.15.4
 Release:        1
 Summary:        JavaScript server-side network application development
 Group:          Development/Other
