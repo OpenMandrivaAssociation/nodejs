@@ -1,19 +1,19 @@
 # ****ing python 2.x...
 #global _python_bytecompile_build 0
 
-Name:           nodejs
-Version:        14.15.4
-Release:        1
-Summary:        JavaScript server-side network application development
-Group:          Development/Other
-License:        MIT
-URL:            http://nodejs.org/
+Name:		nodejs
+Version:	14.16.0
+Release:	1
+Summary:	JavaScript server-side network application development
+Group:		Development/Other
+License:	MIT
+URL:		http://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
 #Patch1:		v8-icu-67.patch
 
-BuildRequires:  libstdc++-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libcares)
 BuildRequires:	pkgconfig(libuv)
@@ -55,7 +55,7 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %make CC=%{__cc} CXX=%{__cxx}
 
 %install
-export PATH=`pwd`:$PATH
+export PATH=$(pwd):$PATH
 %makeinstall_std CC=%{__cc} CXX=%{__cxx}
 
 find %{buildroot} -type f -empty -delete
