@@ -14,6 +14,7 @@ Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
 #Patch1:		v8-icu-67.patch
+Patch2:		https://src.fedoraproject.org/rpms/nodejs/raw/rawhide/f/0001-Disable-running-gyp-on-shared-deps.patch
 
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig(openssl)
