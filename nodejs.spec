@@ -1,9 +1,11 @@
+%global optflags %{optflags} -O3
+
 # ****ing python 2.x...
 #global _python_bytecompile_build 0
 
 Name:		nodejs
 Version:	16.1.0
-Release:	1
+Release:	2
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
@@ -24,6 +26,7 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 BuildRequires:	atomic-devel
+Requires:	ca-certificates
 
 %description
 Evented I/O for Google V8 JavaScript
@@ -37,7 +40,13 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 %prep
 %autosetup -p1 -n node-%{version}
 
+# remove bundled dependencies that we aren't building
+rm -rf deps/zlib
+rm -rf deps/brotli
+
 %build
+%set_build_flags
+
 # Use python 2.x for building...
 #ln -s `which python2` python
 #export PATH=`pwd`:$PATH
@@ -51,12 +60,14 @@ Node.js's goal is to provide an easy way to build scalable network programs.
 	--shared-nghttp2 \
 	--with-intl=system-icu \
 	--shared-cares \
-	--shared-zlib
-%make CC=%{__cc} CXX=%{__cxx}
+	--shared-zlib \
+	--openssl-use-def-ca-store
+
+%make_build BUILDTYPE=Release CC="%{__cc}" CXX="%{__cxx}" CFLAGS="%{optflags}" LDFLAGS="%{build_ldflags}"
 
 %install
 export PATH=$(pwd):$PATH
-%makeinstall_std CC=%{__cc} CXX=%{__cxx}
+%make_install CC=%{__cc} CXX=%{__cxx}
 
 find %{buildroot} -type f -empty -delete
 
