@@ -1,10 +1,13 @@
 %global optflags %{optflags} -O3
 
+# Broken build system doesn't know about debugsource
+%global _empty_manifest_terminate_build 0
+
 # ****ing python 2.x...
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	16.2.0
+Version:	16.6.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
