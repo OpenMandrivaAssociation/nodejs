@@ -84,6 +84,7 @@ find %{buildroot} -type f -empty -delete
 %{_bindir}/node*
 %{_bindir}/npm
 %{_bindir}/npx
+%{_bindir}/corepack
 %{_includedir}/node
 %{_prefix}/lib/node_modules
 %{_mandir}/man1/node.1.*
