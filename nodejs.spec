@@ -1,4 +1,8 @@
-%global optflags %{optflags} -O3
+# As of clang 13.0.0, nodejs 17.3.0,
+# regular -flto uses up so much space it'll eventually
+# run out of RAM even on a box with 64 GB RAM not doing
+# much else... Let's try thin LTO here.
+%global optflags %{optflags} -O3 -flto=thin
 
 # Broken build system doesn't know about debugsource
 %global _empty_manifest_terminate_build 0
@@ -7,7 +11,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	16.6.0
+Version:	17.3.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
