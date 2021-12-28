@@ -1,8 +1,9 @@
 # As of clang 13.0.0, nodejs 17.3.0,
-# regular -flto uses up so much space it'll eventually
+# -flto and even -flto=thin uses up so much space it'll eventually
 # run out of RAM even on a box with 64 GB RAM not doing
-# much else... Let's try thin LTO here.
-%global optflags %{optflags} -O3 -flto=thin
+# much else...
+%define _disable_lto 1
+%global optflags %{optflags} -O3
 
 # Broken build system doesn't know about debugsource
 %global _empty_manifest_terminate_build 0
