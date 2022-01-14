@@ -12,7 +12,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	17.3.0
+Version:	17.3.1
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
@@ -36,6 +36,11 @@ BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 BuildRequires:	atomic-devel
 Requires:	ca-certificates
+# Just so we get Provides: nodejs(engine) and friends
+BuildRequires:	nodejs-packaging
+# npm is a separate package on some other distros, let's
+# try to keep depending packages compatible
+Provides:	npm = %{EVRD}
 
 %description
 Evented I/O for Google V8 JavaScript
