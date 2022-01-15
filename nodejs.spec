@@ -41,6 +41,7 @@ BuildRequires:	nodejs-packaging
 # npm is a separate package on some other distros, let's
 # try to keep depending packages compatible
 Provides:	npm = %{EVRD}
+Provides:	nodejs(engine) = %{EVRD}
 
 %description
 Evented I/O for Google V8 JavaScript
