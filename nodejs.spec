@@ -2,7 +2,7 @@
 # -flto and even -flto=thin uses up so much space it'll eventually
 # run out of RAM even on a box with 64 GB RAM not doing
 # much else...
-%define _disable_lto 1
+#define _disable_lto 1
 %global optflags %{optflags} -O3
 
 # Broken build system doesn't know about debugsource
@@ -12,7 +12,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	17.3.1
+Version:	17.5.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
