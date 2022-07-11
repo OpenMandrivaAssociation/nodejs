@@ -12,7 +12,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	17.5.0
+Version:	18.5.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
@@ -22,6 +22,7 @@ Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
 #Patch1:		v8-icu-67.patch
+Patch1:		node-18.5-python-3.11.patch
 Patch2:		https://src.fedoraproject.org/rpms/nodejs/raw/rawhide/f/0001-Disable-running-gyp-on-shared-deps.patch
 
 BuildRequires:	libstdc++-devel
