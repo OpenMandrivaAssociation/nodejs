@@ -6,14 +6,14 @@
 %global optflags %{optflags} -O3
 
 # Broken build system doesn't know about debugsource
-%global _empty_manifest_terminate_build 0
+%undefine _debugsource_package
 
 # ****ing python 2.x...
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	19.8.0
-Release:	2
+Version:	19.9.0
+Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
