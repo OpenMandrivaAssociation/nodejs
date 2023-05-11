@@ -6,13 +6,13 @@
 %global optflags %{optflags} -O3
 
 # Broken build system doesn't know about debugsource
-%undefine _debugsource_package
+%undefine _debugsource_packages
 
 # ****ing python 2.x...
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	19.9.0
+Version:	20.1.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
