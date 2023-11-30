@@ -12,7 +12,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	21.1.0
+Version:	21.2.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
