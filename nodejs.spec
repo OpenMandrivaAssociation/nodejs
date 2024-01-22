@@ -12,7 +12,7 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	21.5.0
+Version:	21.6.1
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
@@ -84,6 +84,8 @@ export PATH=$(pwd):$PATH
 %make_install CC=%{__cc} CXX=%{__cxx}
 
 find %{buildroot} -type f -empty -delete
+
+ln -s node %{buildroot}%{_bindir}/nodejs
 
 %files
 %{_bindir}/node*
