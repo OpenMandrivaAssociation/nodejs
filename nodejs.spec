@@ -17,7 +17,7 @@ Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
-URL:		http://nodejs.org/
+URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
