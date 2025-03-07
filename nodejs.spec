@@ -34,6 +34,7 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 BuildRequires:	atomic-devel
+BuildRequires:	ninja
 Requires:	ca-certificates
 # Just so we get Provides: nodejs(engine) and friends
 BuildRequires:	nodejs-packaging
@@ -75,9 +76,10 @@ rm -rf deps/brotli
 	--with-intl=system-icu \
 	--shared-cares \
 	--shared-zlib \
-	--openssl-use-def-ca-store
+	--openssl-use-def-ca-store \
+	--ninja
 
-%make_build BUILDTYPE=Release CC="%{__cc}" CXX="%{__cxx}" CFLAGS="%{optflags}" LDFLAGS="%{build_ldflags}"
+%ninja_build -C out/Release
 
 %install
 export PATH=$(pwd):$PATH
