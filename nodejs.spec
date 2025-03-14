@@ -13,7 +13,7 @@
 
 Name:		nodejs
 Version:	23.9.0
-Release:	2
+Release:	3
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
