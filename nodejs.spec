@@ -12,8 +12,8 @@
 #global _python_bytecompile_build 0
 
 Name:		nodejs
-Version:	23.9.0
-Release:	3
+Version:	23.11.0
+Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
