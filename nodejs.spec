@@ -21,7 +21,7 @@ URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
-#Patch1:		v8-icu-67.patch
+Patch1:		nodejs-24.12.0-python3.14.patch
 
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig(openssl)
