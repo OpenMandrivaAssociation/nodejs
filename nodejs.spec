@@ -35,6 +35,7 @@ BuildRequires:	pkgconfig(zlib)
 BuildRequires:	icu-devel >= 60
 BuildRequires:	atomic-devel
 BuildRequires:	ninja
+BuildRequires:	make
 Requires:	ca-certificates
 # Just so we get Provides: nodejs(engine) and friends
 BuildRequires:	nodejs-packaging
