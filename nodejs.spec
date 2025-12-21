@@ -23,6 +23,10 @@ Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
 Patch1:		nodejs-24.12.0-python3.14.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libcares)
