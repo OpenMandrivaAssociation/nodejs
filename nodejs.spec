@@ -8,12 +8,9 @@
 # Broken build system doesn't know about debugsource
 %undefine _debugsource_packages
 
-# ****ing python 2.x...
-#global _python_bytecompile_build 0
-
 Name:		nodejs
-Version:	24.12.0
-Release:	2
+Version:	24.14.0
+Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
@@ -21,11 +18,9 @@ URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
 Patch0:		nodejs-link-libatomic.patch
-Patch1:		nodejs-24.12.0-python3.14.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	libstdc++-devel
 BuildRequires:	pkgconfig(openssl)
@@ -67,9 +62,6 @@ rm -rf deps/brotli
 %build
 %set_build_flags
 
-# Use python 2.x for building...
-#ln -s `which python2` python
-#export PATH=`pwd`:$PATH
 # Currently, bundled c-ares is newer than the latest released version.
 # should use --shared-cares once a newer compatible c-ares is released.
 # Might want to add --shared-http-parser at some point
