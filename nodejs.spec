@@ -9,15 +9,15 @@
 %undefine _debugsource_packages
 
 Name:		nodejs
-Version:	24.16.0
-Release:	2
+Version:	26.5.1
+Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
 URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
-Patch0:		nodejs-link-libatomic.patch
+# dropped (no longer applies): Patch0:		nodejs-link-libatomic.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -53,7 +53,7 @@ and a lot of modules to ease your projects creation.
 Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
-%autosetup -p1 -n node-%{version}
+%autosetup -p1 -n node-26.5.1
 
 # remove bundled dependencies that we aren't building
 #rm -rf deps/zlib
