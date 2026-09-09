@@ -10,14 +10,15 @@
 
 Name:		nodejs
 Version:	26.8.2
-Release:	1
+Release:	2
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
 URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
-# dropped (no longer applies): Patch0:		nodejs-link-libatomic.patch
+# CHAR_BIT is used in the ARM64 NEON memcpy path without an include
+Patch0:		nodejs-v8-memcopy-climits.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake

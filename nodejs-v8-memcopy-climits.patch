@@ -1,0 +1,10 @@
+--- node-26.8.2/deps/v8/src/base/memcopy.h	2026-09-09 23:50:55.925752047 +0200
++++ node-26.8.2/deps/v8/src/base/memcopy.h	2026-09-09 23:50:56.302164086 +0200
+@@ -5,6 +5,7 @@
+ #ifndef V8_BASE_MEMCOPY_H_
+ #define V8_BASE_MEMCOPY_H_
+ 
++#include <climits>
+ #include <stdlib.h>
+ 
+ #include <atomic>
