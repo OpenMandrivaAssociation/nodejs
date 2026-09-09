@@ -9,7 +9,7 @@
 %undefine _debugsource_packages
 
 Name:		nodejs
-Version:	26.5.1
+Version:	26.8.2
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
@@ -53,7 +53,7 @@ and a lot of modules to ease your projects creation.
 Node.js's goal is to provide an easy way to build scalable network programs.
 
 %prep
-%autosetup -p1 -n node-26.5.1
+%autosetup -p1 -n node-%{version}
 
 # remove bundled dependencies that we aren't building
 #rm -rf deps/zlib
