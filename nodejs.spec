@@ -2,7 +2,7 @@
 # -flto and even -flto=thin uses up so much space it'll eventually
 # run out of RAM even on a box with 64 GB RAM not doing
 # much else...
-#define _disable_lto 1
+%global _disable_lto 1
 %global optflags %{optflags} -O3
 
 # Broken build system doesn't know about debugsource
