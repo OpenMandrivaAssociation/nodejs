@@ -3,14 +3,17 @@
 # run out of RAM even on a box with 64 GB RAM not doing
 # much else...
 %global _disable_lto 1
-%global optflags %{optflags} -O3
+# V8 + clang on every core OOMs the builder (and the host). Cap jobs
+# and do not emit -g3 debug info during the compile.
+%global _smp_ncpus_max 4
+%global optflags %{optflags} -O3 -g1
 
 # Broken build system doesn't know about debugsource
 %undefine _debugsource_packages
 
 Name:		nodejs
 Version:	26.8.2
-Release:	2
+Release:	4
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
@@ -62,6 +65,8 @@ rm -rf deps/brotli
 
 %build
 %set_build_flags
+# lld defaults to one thread per core; one V8 link is already huge
+export LDFLAGS="${LDFLAGS} -Wl,--threads=1"
 
 # Currently, bundled c-ares is newer than the latest released version.
 # should use --shared-cares once a newer compatible c-ares is released.
@@ -77,7 +82,8 @@ rm -rf deps/brotli
 	--openssl-use-def-ca-store \
 	--ninja
 
-%ninja_build -C out/Release
+# Only the node binary is installed. cctest/embedtest are extra multi-GB links.
+%ninja_build -C out/Release node
 
 %install
 export PATH=$(pwd):$PATH
