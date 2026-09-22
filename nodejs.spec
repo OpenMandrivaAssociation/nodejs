@@ -12,7 +12,7 @@
 %undefine _debugsource_packages
 
 Name:		nodejs
-Version:	26.9.0
+Version:	26.10.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
