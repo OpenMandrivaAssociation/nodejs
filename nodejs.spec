@@ -12,7 +12,7 @@
 %undefine _debugsource_packages
 
 Name:		nodejs
-Version:	26.11.1
+Version:	26.12.0
 Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
@@ -20,8 +20,6 @@ License:	MIT
 URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
-# CHAR_BIT is used in the ARM64 NEON memcpy path without an include
-Patch0:		nodejs-v8-memcopy-climits.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
