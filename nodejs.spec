@@ -193,11 +193,18 @@ PY
 (
 	cd out/Release
 	# gen/release/libnode_crates.a holds the Rust temporal_capi that V8's
-	# Temporal builtins call. It is not a v8_gypfiles archive.
+	# Temporal builtins call. It is not a v8_gypfiles archive. ABF
+	# buildroots have no rustc or cargo, so Node disables Temporal and
+	# never creates the archive. A builder that does have rustc still
+	# needs it, or --no-undefined fails on temporal_rs_*.
+	crates=
+	if [ -f gen/release/libnode_crates.a ]; then
+		crates=gen/release/libnode_crates.a
+	fi
 	c++ -shared ${LDFLAGS} \
 		-Wl,-soname,libv8.so.${V8_MAJOR} \
 		-Wl,--whole-archive $(cat v8-archives.txt) -Wl,--no-whole-archive \
-		gen/release/libnode_crates.a \
+		${crates} \
 		$(pkg-config --libs icu-uc icu-i18n) -latomic -lz -ldl -pthread \
 		-o libv8.so.${V8_MAJOR}
 )
