@@ -27,6 +27,8 @@ License:	MIT
 URL:		https://nodejs.org/
 Source0:	https://github.com/nodejs/node/archive/v%{version}.tar.gz
 Source100:	%{name}.rpmlintrc
+# ICU 79 / Unicode 18: U+1DF95 is in the case closure of U+00DF.
+Patch0:		nodejs-icu79-regexp-nonbmp.patch
 
 BuildRequires:	autoconf
 BuildRequires:	automake
