@@ -20,7 +20,7 @@
 
 Name:		nodejs
 Version:	26.12.1
-Release:	1
+Release:	2
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
