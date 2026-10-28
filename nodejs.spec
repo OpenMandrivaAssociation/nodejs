@@ -19,8 +19,8 @@
 %undefine _debugsource_packages
 
 Name:		nodejs
-Version:	26.12.1
-Release:	2
+Version:	26.13.0
+Release:	1
 Summary:	JavaScript server-side network application development
 Group:		Development/Other
 License:	MIT
